@@ -1,0 +1,33 @@
+classDiagram
+
+class Avion {
+    -matricula : string
+    -modelo : string
+    +constructor(matricula:string, modelo:string)
+    +obtenerDetalle() string
+}
+
+class PlanDeVuelo {
+    -ciudadOrigen : string
+    -ciudadDestino : string
+    +constructor(origen:string, destino:string)
+    +obtenerRuta() string
+}
+
+class Vuelo {
+    -codigoVuelo : string
+    -planDeVuelo : PlanDeVuelo
+    +constructor(codigo:string, origen:string, destino:string)
+    +mostrarDetalleVuelo() void
+}
+
+class Piloto {
+    -nombre : string
+    -horasExperiencia : number
+    -avionAsignado : Avion
+    +constructor(nombre:string, horas:number, avion:Avion)
+    +mostrarEstadoPiloto() void
+}
+
+Piloto o-- Avion : Agregación
+Vuelo *-- PlanDeVuelo : Composición
